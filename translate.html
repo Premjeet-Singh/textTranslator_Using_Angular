@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html ng-app="APP">
+<head>
+	<meta charset="UTF-8">
+	<title>translate Language</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="wrap">
+    <div id="head">Language Translator</div>
+        <h2 translate="TITLE">Hello, good morning, have a nice day</h2>
+          <div ng-controller="transCtrl">
+            <p id="one"><button id="eng" ng-click="changeLanguage('en')" translate="BUTTON_LANG_EN">english</button>
+            <button id="ger" ng-click="changeLanguage('de')" translate="BUTTON_LANG_DE">german</button></p>
+            <p id="two"><button id="spn" ng-click="changeLanguage('es')" translate="BUTTON_LANG_ES">spanish</button>
+            <button id="hin" ng-click="changeLanguage('hi')" translate="BUTTON_LANG_HI">Hindi</button></p>
+          </div>
+    <div id="foot"><span id="back"> &nbsp;&#8617; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8634; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &equiv; </span></div>
+  </div>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.1.4/angular.min.js"></script>
+	<script src="translate.js"></script>
+	<script>
+    var app = angular.module('APP', ['pascalprecht.translate'])
+    .config(function ($translateProvider) {
+      $translateProvider.translations('en', {
+        TITLE: 'Hello, good morning, have a nice day',
+        BUTTON_LANG_EN: 'English',
+        BUTTON_LANG_DE: 'German',
+        BUTTON_LANG_ES: 'Spanish',
+        BUTTON_LANG_HI: 'Hindi',
+
+      });
+      $translateProvider.translations('hi', {
+        TITLE: 'हैलो सुप्रभात , अपने दिन शुभ  हो',
+        BUTTON_LANG_EN: 'अंग्रेज़ी',
+        BUTTON_LANG_DE: 'जर्मन',
+        BUTTON_LANG_ES: 'स्पेनिश',
+        BUTTON_LANG_HI: 'हिंदी',
+
+      });
+      $translateProvider.translations('de', {
+        TITLE: 'Hallo, guten Morgen, einen schönen Tag',
+        BUTTON_LANG_EN: 'Englisch',
+        BUTTON_LANG_DE: 'Deutsch',
+        BUTTON_LANG_ES: 'Spanisch',
+        BUTTON_LANG_HI: 'Hindi',
+      });
+      $translateProvider.translations('es', {
+        TITLE: 'Hola , buenos días , tenga un buen día',
+        BUTTON_LANG_EN: 'Inglés',
+        BUTTON_LANG_DE: 'Alemán',
+        BUTTON_LANG_ES: 'Español',
+        BUTTON_LANG_HI: 'hindi',
+      });
+
+      $translateProvider.preferredLanguage('en');
+
+    })
+    .controller('transCtrl', ['$scope', '$translate', function ($scope, $translate) {
+      $scope.changeLanguage = function (key) {
+        $translate.use(key);
+      };
+    }]);
+	</script>
+</body>
+</html>
