@@ -1,12 +1,19 @@
+
 *{
   margin: 0;
   padding: 0;
 }
+
+body{
+  background: #003333;
+}
+
 #wrap{
   width: 500px;
   height: 360px;
   margin: 20px auto;
   background:#D5DBD8;
+  padding: 18px;
 }
 #head{
 /*   width: 100%; */
